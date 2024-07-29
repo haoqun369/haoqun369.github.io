@@ -11,13 +11,15 @@
 	</head>
 	<body>
 		<div id="app">
-			<select v-model="locate" @change="locatechange" id="r1">
+			<select style="width: 100%;text-align: center;font-size: medium;" v-model="locate" @change="locatechange" id="r1">
 				<option value="tokyo">东京</option>
 				<option value="osaka">大阪</option>
 				<option value="food">美食</option>
 			</select>
-			<p>{{issue}}</p>
-			<button v-on:click="reverse">{{txt}}</button>
+			<p style="width: 100%;text-align: center;font-size: x-large;">{{issue}}</p>
+			<div style="width: 100%;text-align: center;">
+				<button  style="font-size: medium;" v-on:click="reverse">{{txt}}</button>
+			</div>
 		</div>
 
 		<script>
@@ -25,13 +27,14 @@
 				el: '#app',
 				data: {
 					issues: {
-						tokyo: ['东京塔', '吉卜力博物馆', '浅草寺抽', '东京火车站', '筑地鱼市场早餐',
-							'上野公园', '秋叶原', '池袋', '看相扑', '女仆咖啡店', '惠比寿喝啤酒', '药妆店',
-							'江户东京博物馆', '新宿歌舞伎听', '晴空塔', '涩谷sky', '探索自动贩卖机', '茶道',
-							'日本白草莓', '明知殿', '富士山', '苹果糖捞金鱼', '泡温泉', '猫头鹰咖啡店', '明知神宫殿'
+						tokyo: ['东京塔', '吉卜力博物馆', '浅草寺', '东京火车站', '筑地鱼市场早餐','国立美术馆'
+							'上野公园', '秋叶原', '池袋', '看相扑', '女仆咖啡店', '惠比寿喝啤酒', '药妆店','皇居','根津美术馆',
+							'江户东京博物馆', '新宿歌舞伎听', '晴空塔', '涩谷sky', '探索自动贩卖机', '茶道','晴空塔',
+							'日本白草莓', '明治神宫', '富士山', '苹果糖捞金鱼', '泡温泉', '猫头鹰咖啡店', '明知神宫殿','夕阳美术馆'
 						],
-						osaka:['天野明展','大阪烧'],
-						food:[]
+						osaka:['天野明展','心斋桥','难波八板神社','母津市场','大阪城','道顿堀','黑门市场','通天阁','四天王寺','梅田商圈','天守阁','读卖电视台柯南铜像'],
+						
+						food:['大阪烧','和牛烤肉','寿喜烧','拉面','寿司','咖喱','烧鸟','鳗鱼饭','天妇罗','涮涮锅','关东煮','茶泡饭','鳗鱼饭','生鱼片']
 					},
 					locate: 'tokyo',
 					index: 0,
@@ -46,7 +49,7 @@
 							this.index += 1;
 							this.index = this.index % this.issues[this.locate].length;
 							this.issue = this.issues[this.locate][this.index];
-							console.log(this.index);
+							// console.log(this.index);
 						} else {
 						}
 					},
@@ -65,7 +68,7 @@
 				},
 				mounted() {
 					this.issue = this.issues[this.locate][this.index];
-					setInterval(this.indexIncrease, 1000);
+					setInterval(this.indexIncrease, 50);
 				}
 			})
 		</script>
